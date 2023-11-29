@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}SE Arena{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/challenges.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="challenges-container">
+    <h1>Challenges</h1>
+
+    <label>Select your difficulty: 
+        <select name="difficulty" id="difficulty" onchange="populateChallenges()">
+            <option value="1">Very Easy</option>
+            <option value="2">Easy</option>
+            <option value="3">Medium</option>
+            <option value="4">Hard</option>
+            <option value="5">Very Hard</option>
+        </select>
+    </label>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Difficulty</th>
+                <th>Score</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody id="challenges-body"></tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', path='/js/challenges.js') }}"></script>
+{% endblock %}

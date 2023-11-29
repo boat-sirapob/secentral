@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}SE Central{% endblock %}
+    </title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='/assets/favicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:normal,bold">
+    {% block style %}{% endblock %}
+    <script>let FF_FUOC_FIX;</script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            {% block header %}
+            <nav class="shadow">
+                <a href="/home">
+                    <img src="{{ url_for('static', path='/assets/se.png') }}">
+                </a>
+                <div class="nav-content">
+                    <div>
+                        <a href="/home">Home</a>
+                        <a href="/home#about">About</a>
+                        <a href="/challenges">Challenges</a>
+                        <a href="/forum">Forum</a>
+                    </div>
+                    <div>
+                        {% if logged_in %}
+                            <a href="/profile/{{ user.uuid }}">Profile</a>
+                            <a href="/logout">Log out</a>
+                        {% else %}
+                            <a href="/login">Log in</a>
+                            <a href="/register">Sign up</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <a href="javascript:void(0);" id="nav-menu-button" onclick="openMenu()">
+                    <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 7L4 7" stroke="#000000" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M20 12L4 12" stroke="#000000" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M20 17L4 17" stroke="#000000" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                </a>
+            </nav>
+            {% endblock %}
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="footer">
+            {% block footer %}
+                <footer>
+                    <p>Made by 65011443 and 65011527.</p>
+                    <p>Images from unsplash.com and pixabay.com</p>
+                </footer>
+            {% endblock %}
+        </div>
+    </div>
+    <script>
+        function openMenu() {
+            var navContent = document.querySelector('.nav-content');
+            if (window.getComputedStyle(navContent).display === 'none') {
+                navContent.style.display = 'flex';
+            } else {
+                navContent.style.display = '';
+            }
+        }
+    </script> 
+    {% block scripts %}{% endblock %}
+</body>
+</html>

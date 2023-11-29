@@ -1,0 +1,97 @@
+{% extends "forum_base.html" %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/forum.css') }}">
+<style>
+    .top-bar > * {
+        display: none;
+    }
+    .top-bar {
+        display: flex;
+    }
+    .top-bar h1 {
+        display: block;
+    }
+</style>
+{% endblock %}
+
+{% block forum_content %}
+<div class="post-container">
+    <div class="post-box">
+        <div class="post-content-container">
+            <div class="post-title">
+                {{ post.title }}
+            </div>
+            <div class="post-content">
+                {{ post.content }}
+            </div>
+            <div class="post-details"> 
+                <p>Posted by: <a href="/profile/{{ post.author_uuid }}">{{ get_user(post.author_uuid).name }}</a><br/> Date created: {{ post.created_at_formatted }}</p></p>
+            </div>
+        </div>
+        <div class="comments-container">
+            {% for comment in post.comments %}
+            <div class="comment" id="{{ comment.comment_id }}">
+                {% set comment_user = get_user(comment.author_uuid) %}
+                <div class="comment-image">
+                    <a href="/profile/{{ comment_user.uuid }}">
+                        <img src="/profile/get-photo/{{ comment_user.uuid }}" />
+                    </a>
+                </div>
+                <div class="comment-content">
+                    <h4 style="color: black;">{{ comment_user.name }}</h4>
+                    <p style="white-space: pre-wrap;">{{ comment.content }}</p>
+                    <p style="color: rgba(0,0,0,40%);">{{ comment.created_at }} 
+                        {% if comment.edited %}
+                            Edited
+                        {% endif %}
+                    </p>
+                </div>
+                {% if user == comment_user %}
+                <div class="comment-tools">
+                    <div class="dropdown">
+                        <button class="open-menu-button">...</button>
+                        <div class="dropdown-content">
+                            <button id="edit-button" onclick="openMenu('edit-comment-menu', '{{ comment.comment_id }}')">Edit Comment</button>
+                            <button id="delete-button" onclick="openMenu('delete-comment-menu', '{{ comment.comment_id }}')">Delete Comment</button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <form method="POST" action="/forum/post/{{ post.post_id }}/new_comment">
+            <textarea name="comment_body"></textarea>
+            <button>Add comment</button>
+        </form>
+    </div>
+</div>
+<div id="modal" class="modal">
+    <div class="modal-box-container">
+        <div class="modal-box">
+            <span class="close" id="close-modal">&times;</span>
+            <div class="modal-content">
+                <div class="menu" id="edit-comment-menu">
+                    <form id="comment-edit-form" method="POST" action="/forum/post/{{ post.post_id }}/edit_comment">
+                        <textarea name="new_content"></textarea>
+                        <button type="submit" id="edit-comment-button">Submit</button>
+                        <input type="text" name="comment_id" style="display: none;" />
+                    </form>
+                </div>
+                <div class="menu" id="delete-comment-menu">
+                    <form id="comment-delete-form" method="POST" action="/forum/post/{{ post.post_id }}/delete_comment">
+                        <label>Are you sure you want to delete your comment?</label>
+                        <button type="submit" id="delete-comment-button">Yes</button>
+                        <input type="text" name="comment_id" style="display: none;" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', path='/js/post.js') }}"></script>
+{% endblock %}

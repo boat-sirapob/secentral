@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}404 Not Found{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/index.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endblock %}
+
+{% block content %}
+<div class="sections-container">
+    <div class="hero section">
+        <div class="content-container">
+            <div class="white title">
+                <span class="shadow">404 Not Found</span>
+            </div> 
+            <div class="content">
+                <p class="shadow">Oops! The page you are looking for does not exist.</p>
+            </div> 
+            <div class="button-area">
+                <a href="/home"><span class="material-icons">home</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

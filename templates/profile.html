@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+{% set background_color = profile_user.get_profile_color() %}
+{% if get_luminescence(background_color) > 0.5 %}
+    {% set foreground_color = "black" %}
+{% else %}
+    {% set foreground_color = "white" %}
+{% endif %}
+<div class="profile-container" style="background-color: {{ background_color }}; color: {{ foreground_color }}">
+    {% if user and user.uuid == profile_user.uuid %}
+    <div class="dropdown">
+        <button class="open-menu-button" style="color: {{ foreground_color }};">...</button>
+        <div class="dropdown-content">
+            <button id="edit-photo-button">Change Profile Picture<Picture></Picture></button>
+            <button id="edit-theme-button">Change Profile Color</button>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-box-container">
+            <div class="modal-box">
+                <span class="close" id="close-modal">&times;</span>
+                <div class="modal-content">
+                    <div class="menu" id="edit-photo-menu">
+                        <form id="photo-form" method="POST" action="/profile/upload-photo/{{ profile_user.uuid }}" enctype="multipart/form-data">
+                            <input type="file" name="file" id="file-input" accept="image/*">
+                            <img id="preview-img" src="#" alt="" />
+                            <button type="submit" id="upload-photo-button">Submit</button>
+                        </form>
+                    </div>
+                    <div class="menu" id="edit-theme-menu">
+                        <form id="profile-theme-form" method="POST" action="/profile/change-theme/{{ profile_user.uuid }}">
+                            <label>
+                                Select a color: 
+                                <input type="color" name="color" id="color-input" value="{{ background_color }}" />
+                            </label>
+                            <button type="submit" id="change-theme-button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="profile-picture">
+        <img src="/profile/get-photo/{{ profile_user.uuid }}" alt="User Profile Picture">
+    </div>
+    <div class="user-details">
+        <h2>{{ profile_user.name }}</h2>
+    </div>
+    <div class="user-stats">
+        <div>
+            <h3><i class="fa fa-trophy"></i> Score</h3>
+            <p>Score: {{ profile_user.get_score() }}</p>
+        </div>
+        <div>
+            <h3><i class="fa fa-file-o"></i> Posts</h3>
+            <p>No. of posts: {{ profile_user.posts | length }}</p>
+        </div>
+        <div>
+            <h3><i class="fa fa-comment"></i> Comments</h3>
+            <p>No. of comments: {{ profile_user.comments | length }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% if user and user.uuid == profile_user.uuid %}
+<script src="{{ url_for('static', path='/js/profile.js') }}"></script>
+{% endif %}
+{% endblock %}

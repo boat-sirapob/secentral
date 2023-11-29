@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}SE Connect{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/forum.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="forum-section">
+    <div class="top-bar">
+        <h1>
+            <a href="/forum">Discussion Forum</a>
+        </h1>
+        
+        <div>
+            <input type="text" id="search-input" placeholder="Search for a topic">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="sort-buttons">
+            <button id="sort-top">Top</button>
+            <button id="sort-recent">Recent</button>
+            <button id="sort-old">Old</button>
+        </div>
+    </div>
+    {% block forum_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

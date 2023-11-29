@@ -1,0 +1,87 @@
+
+.sections-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.hero {
+    background: linear-gradient(135deg, rgb(204, 0, 255), #00ffbb);
+    display: flex;
+    flex-direction: column;
+}
+
+.button-area {
+    margin-top: 50px;
+}
+
+.button-area a {
+    text-decoration: none;
+    color: rgba(255,255,255,50%);
+    transition: 0.4s;
+}
+
+.button-area a:hover {
+    color: rgba(255, 255, 255, 100%);
+}
+
+.button-area a span {
+    font-size: 40px;
+}
+
+.title {
+    font-size: 80px;
+}
+
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+.content-container {
+    max-width: 50vw;
+    height: 100%;
+    margin: auto;
+    color: rgba(255,255,255,80%);
+}
+
+.about {
+    background: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.about-coding {
+    flex: 100%;
+    margin: 20px;
+    background: linear-gradient(135deg, rgb(122, 27, 231), #58f1f1);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.about-forum, .about-achivement {
+    flex: 2;
+    margin: 20px;
+    background: linear-gradient(135deg, rgb(231, 149, 27), #f15858);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.about h1, .about p {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.about h1 {
+    color: white;
+}

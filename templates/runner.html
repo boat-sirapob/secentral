@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}SE Arena{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/runner.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="challenge-container">
+    <div class="editor-container box shadow">
+        <div id="editor">{{ challenge.code | safe }}</div>
+        <div class="editor-tools-container">
+            <button class="small-button" onclick="importCode()">Import</button>
+            <button class="small-button" onclick="exportCode()">Export</button>
+            <button class="small-button" onclick="resetCode()">Reset</button>
+            <button class="small-button" onclick="clearCode()">Clear</button>
+        </div>
+        <input type="file" id="file-input" name="file-input" accept=".txt, .py" style="display: none;"/>
+    </div>
+    <div class="runner-container box shadow">
+        <div class="tab-container">
+            <div class="tab" id="default">Instructions</div>
+            <div class="tab">Tests</div>
+        </div>
+        <div class="tab-contents" id="instructions">
+            <div class="title">
+                <h1>
+                    {{ challenge.title }}
+                </h1>
+            </div>
+            <div class="instruction-container">
+                {{ challenge.instructions | safe }}
+            </div>
+        </div>
+        <div class="tab-contents" id="tests">
+            <div id="tests-display">{{ challenge.lab | safe }}</div>
+        </div>
+    </div>
+    <div class="result-container box shadow">
+        <div class="button-container">
+            {% if user %}
+            <button id="run-button" class="large-button" onclick="run()">Run</button>
+            <button id="submit-button" class="large-button" onclick="submit()">Submit</button>
+            {% else %}
+            <button class="large-button" disabled>You need to log in to run or submit</button>
+            {% endif %}
+        </div>
+        <div id="result"></div>
+    </div>
+</div>
+<div id="modal" class="modal">
+    <div class="modal-box-container">
+        <div class="modal-box">
+            <!-- <span class="close" id="close-modal">&times;</span> -->
+            <div class="modal-content">
+                <div class="submit-result-container">
+                    <h1 id="submit-result-status"></h1>
+                    <h2 id="submit-result-score"></h2>
+                    <div>
+                        <button id="stay-button">Stay here</button>
+                        <button id="back-button">Back to menu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.31.1/ace.min.js" integrity="sha512-iUK+dRJntrD/66cOBtnhcNLxHLSX56pfDw3K3jolmy9hxfpAgHQhIvfsraWd6rJZMy2zewMoynUvYonma81Oqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    const challengeID = "{{ challenge._id }}";
+    const defaultCode = `{{ challenge.code | safe }}`;
+    const totalScore = {{ score }};
+</script>
+<script type="text/javascript" src="{{ url_for('static', path='/js/runner.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,203 @@
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1, ol, h4 {
+    margin: 0;
+    color: black;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 154, 86, 0.881); 
+    padding: 3px 40px;
+}
+
+#search-input {
+    margin-right: 10px;
+    padding: 8px 16px;
+}
+
+#search-button {
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.main-section {
+    padding: 10px 15px;
+}
+
+.row {
+    padding: 5px 0;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    font-size: 12px;
+    gap: 10px;
+}
+
+#new-post-button {
+    margin: 10px;
+    border: none;
+    padding: 8px 16px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#new-post-title {
+    position: left; 
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+}
+
+#new-post-content {
+    padding: 30px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+#create-post-button {
+    position: left; 
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 8px 16px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background: rgba(255, 154, 86, 0.881);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background: rgba(0,0,0,0.5);
+}
+
+.sort-buttons button {
+    background-color: transparent;
+    color: black; 
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sort-buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.post-box {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding: 20px;
+    background-color: rgb(243, 237, 229);
+}
+
+.post-content {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 50px;
+    background-color: rgb(243, 237, 229);
+}
+
+.post-details {
+    padding: 10px;
+    font-size: 14px;
+    background-color: rgb(243, 237, 229);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 8em;
+    box-sizing: border-box;
+    border: 2px solid #cccccce0;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.post-box form button {
+    padding: 15px;
+    vertical-align: top;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.comment-section {
+    margin-top: 30px;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment {
+    border: 1px solid rgb(243, 237, 229);;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    word-break: normal;
+}
+
+.comment img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-tools {
+    flex-basis: 3%;
+}
+
+#new-post-modal-box {
+    width: 50%;
+}

@@ -1,0 +1,300 @@
+
+:root {
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: black;
+    background-color: hsla(0, 0%, 98%);
+    margin: 0;
+}
+
+p, h1, h2, h3, h4 {
+    margin: 0;
+}
+
+nav img {
+    width: 60px;
+    margin: auto 10px;
+    vertical-align: middle;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    line-height: 48px;
+    background-color: hsla(0, 0%, 95%);
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* separate left and right */
+    width: 100%;
+}
+
+.nav-content div {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-content div a:hover {
+    background-color: rgba(0,0,0,0.10);
+}
+
+.nav-content div a:active {
+    background-color: rgba(0,0,0,0.20);
+}
+
+.nav-content div a {
+    text-decoration: none;
+    color: black;
+    padding: 0 20px;
+}
+
+#nav-menu-button {
+    padding: 0 5px;
+}
+
+@media screen and (min-width: 700px) {
+    .nav-content {
+        display: flex;
+    }
+
+    #nav-menu-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .nav-content {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: hsla(0, 0%, 95%);
+        z-index: 1;
+    }
+
+    .nav-content div {
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .nav-content div a {
+        padding: 10px 20px; 
+    }
+
+    #nav-menu-button {
+        display: flex;
+    }
+
+    nav {
+        justify-content: space-between;
+    }
+}
+
+footer {
+    color: hsla(0, 0%, 0%, 50%);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer {
+    z-index: 1;
+}
+
+.header {
+    z-index: 1;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.section {
+    min-height: 100vh;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.main {
+    min-height: calc(100vh - 50px);
+}
+
+.title {
+    font-weight: bold;
+    margin: 0 auto;
+    color: hsla(0, 0%, 20%);
+}
+
+.small-button {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-image: linear-gradient(180deg,transparent,transparent 50%,rgba(0,0,0,.04));
+    background-color: rgba(0,0,0,.05);
+}
+
+.small-button:active {
+    background-color: hsla(0, 0%, 0%, 20%);
+}
+
+.big-button {
+    border: 0;
+    border-radius: 10px;
+    padding: 7px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto;
+    background-color: white;
+}
+
+.big-button:active {
+    background-color: gray;
+}
+
+.shadow {
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.30));
+}
+
+.open-menu-button {
+    display: block;
+    position: absolute;
+    right: 0%;
+    top: -16px;
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 32px;
+    width: max-content;
+}
+
+.dropdown-content button {
+    display: block;
+    word-break: normal;
+    border: none;
+    background-color: #f4f4f4;
+    color: black;
+    padding: 8px 16px;
+    width: 100%;
+}
+
+.dropdown-content button:hover {
+    background-color: rgba(255,255,255,50%);
+}
+
+button {
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: black;
+}
+
+.modal-box-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-box {
+    background-color: #fefefe;
+    margin: auto;
+    min-width: 300px;
+    height: min-content;
+    position: relative;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.modal-content > div {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#preview-img {
+    flex-grow: 1;
+    min-height: 150px;
+}
+
+.modal button {
+    margin: 0 auto;
+    min-width: 100px;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 8px 16px;
+}
+
+.menu {
+    display: none;
+    text-align: center;
+}

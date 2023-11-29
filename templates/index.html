@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/index.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endblock %}
+
+{% block content %}
+<div class="sections-container">
+    <div class="hero section">
+        <div class="content-container">
+            <div class="white title">
+                <span class="shadow">SECentral</span>
+            </div>
+            <div class="content">
+                <p class="shadow">We believe in the power of practice, 
+                collaboration, and community to elevate your coding skills. 
+                Whether you're a seasoned developer or just starting your coding journey, 
+                this is the place for you.</p>
+            </div>
+            <div class="button-area">
+                <a href="#about"><span class="material-icons">expand_more</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="about section" id="about">
+        <div class="about-coding">
+            <h1><span class="material-icons">code</span> Coding Practice</h1>
+            <p>Practice makes perfect. <br>We provide a variety of coding problems to help you improve your coding skills.</p>
+            <p>Our curated set of coding challenges cover a wide range of difficulty levels, <br>ensuring that both beginners and experienced developers can find suitable exercises.</p>
+        </div>
+    
+        <div class="about-forum">
+            <h1><span class="material-icons">chat_bubble</span>  Discussion Forum</h1>
+            <p>Join our vibrant community where developers from all levels collaborate.</p>
+            <p>Engage in discussions, seek help, and contribute your insights to create a dynamic learning environment.</P>
+        </div>
+    
+        <div class="about-achivement">
+            <h1><span class="material-icons">assistant_photo</span> Progress</h1>
+            <p>Track your coding journey through a comprehensive scoring system.</p>
+            <p>Our unique scoring mechanism evaluates your performance on coding challenges, providing a quantitative measure of your skills.</p>
+            <p>Earn points for each successfully completed task, and see your score increase as you tackle more challenging problems.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

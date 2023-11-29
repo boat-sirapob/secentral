@@ -1,0 +1,64 @@
+
+body {
+    background: url("/static/assets/login_bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.content {
+    justify-content: center;
+    align-items: center;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    text-align: center;
+    background-color: rgba(255,255,255,30%);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    width: 400px;
+    padding: 30px;
+    color: hsla(0, 0%, 20%);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"], input[type="password"], button {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    border: 1px solid black;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    background-color: hsla(0, 0%, 20%);
+    color: white;
+}
+
+input, ::placeholder {
+    text-align: center;
+}
+
+.notification {
+    text-align: center;
+    width: 100%;
+    background-color: rgba(255,0,0,75%);
+    color: white;
+    line-height: 40px;
+    border-radius: 4px;
+}
