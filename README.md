@@ -27,7 +27,7 @@ SE Central is a web application to provide students and teachers alike with a va
 Note: Pyston library only works up to Python 3.10.X
 
 ## Usage
-```uvicorn app:app --host 0.0.0.0 --port 8000 --reload```
+```uvicorn app:app --host 0.0.0.0 --port 80```
 
 ## Demo
 ![Home page](docs/screenshots/home.png)
